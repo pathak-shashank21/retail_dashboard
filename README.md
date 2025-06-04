@@ -1,77 +1,91 @@
-Retail_dashboard
+# Retail Dashboard
 
-A complete business intelligence and data science solution for retail analytics, combining Power BI dashboards with Python-based data processing and forecasting. The project simulates a real-world retail environment using historical sales and store data from the Rossmann dataset.
+A complete business intelligence and data science solution for retail analytics, combining Power BI dashboards with Python-based data processing and forecasting. This project simulates a real-world retail environment using historical sales and store data from the Rossmann dataset.
 
-Project Overview
-This project showcases an end-to-end analytics pipeline for retail performance monitoring. It integrates data cleaning, feature engineering, forecasting, and BI dashboarding to support decision-making at both executive and operational levels.
+---
 
-Directory Structure
+## 📁 Project Structure
 
-
+```
 retail_dashboard/
 ├── data/
-│   ├── raw/                          # Kaggle Rossmann Original data
-│   │   ├── store.csv
-│   │   ├── test.csv
-│   │   └── train.csv
-│   └── processed/                    # Cleaned and engineered datasets
+│   ├── raw/                  # Original Kaggle files (store.csv, train.csv, test.csv)
+│   └── processed/            # Cleaned and compressed data
 │       ├── cleaned_store.csv
-│       ├── cleaned_train.csv
-│       └── rossmann_features.csv
-├── kaggle.json                       # Kaggle API token for automated download
-├── pitch_deck.pptx                   # Executive summary presentation
-├── powerbi/
-│   ├── dashboard_1.png               # Power BI page screenshots
-│   ├── dashboard_2.png
-│   ├── dashboard_3.png
-│   └── retail_dashboard.pbix         # Main Power BI dashboard file
+│       ├── cleaned_train.csv.gz
+│       └── rossmann_features.csv.gz
 ├── scripts/
-│   ├── data_cleaner.py               # Cleans raw CSVs and standardizes formats
-│   └── feature_engineering.py        # Adds derived columns and analytical flags
-├── README.md
+│   ├── data_cleaner.py       # Cleans raw sales/store data
+│   └── feature_engineering.py # Adds derived features and flags
+├── powerbi/
+│   ├── retail_dashboard.pbix # Power BI report file
+│   ├── dashboard_1.png       # Executive summary screenshot
+│   ├── dashboard_2.png       # Product performance screenshot
+│   └── dashboard_3.png       # Regional breakdown screenshot
+├── pitch_deck.pptx           # Executive slide deck (3-slide summary)
+├── kaggle.json               # API key for automated data pull (optional)
+└── README.md
+```
 
+---
 
-Key Features
-Built a multi-page Power BI dashboard with KPI cards, trend lines, maps, and product breakdowns.
+## 🔑 Key Features
 
-Cleaned and standardized raw sales and store data using Python.
+- Built a multi-page Power BI dashboard with KPI cards, trend lines, maps, and product breakdowns.
+- Cleaned and standardized raw sales/store data using Python.
+- Engineered profit margins, holiday/promo flags, seasonality, and weekday patterns.
+- Forecasted next 3 months of sales using Prophet, imported predictions into Power BI.
+- Flagged anomalies using 7-day rolling dips (>40%) to detect risks.
+- Performed statistical tests (p-values, t-tests, chi-square) to assess promo impact.
 
-Engineered features such as profit margin, holiday/promo flags, seasonality, and weekday effects.
+---
 
-Integrated Prophet model to forecast 3-month sales, imported into Power BI for visual comparison.
+## ▶️ How to Run
 
-Detected anomalies via 7-day rolling sales dips (>40%) to flag risk zones and stock issues.
+1. **Raw Data**  
+   Place `store.csv`, `train.csv`, and `test.csv` in `data/raw/`.
 
-Performed regression analysis (linear, logistic) with p-values and t-tests to assess promotion impact.
+2. **Run Processing Scripts**
+   ```
+   python scripts/data_cleaner.py
+   python scripts/feature_engineering.py
+   ```
 
-How to Run
-Place raw data in data/raw/
+3. **Open Power BI**
+   - Open `powerbi/retail_dashboard.pbix`
+   - Click **Refresh**
+   - Explore the dashboard pages
 
-Run scripts/data_cleaner.py to clean store and train data.
+---
 
-Run scripts/feature_engineering.py to generate rossmann_features.csv
+## 📊 Dashboard Pages
 
-Open powerbi/retail_dashboard.pbix in Power BI Desktop and refresh the data.
+- **Page 1: Executive Summary**  
+  KPIs, trendlines, region-level overview
 
-Use filters, slicers, and visuals to explore insights across KPIs, regions, products, and forecasted trends.
+- **Page 2: Product Performance**  
+  Top products, categories, sales-profit matrix
 
-Tools Used
-Power BI Desktop – Dashboard design and DAX-based metrics
+- **Page 3: Regional Breakdown**  
+  Map view by city/state, orders and returns
 
-Python (Pandas, Prophet, NumPy) – Data cleaning and forecasting
+- **Page 4: Inventory + Forecast** *(optional)*  
+  Forecasted trends, low-stock flags
 
-Statistical Analysis – t-tests, chi-square, regression for causal inference
+---
 
-Star Schema Modeling – Fact and dimension table structure
+## 🛠️ Tools Used
 
-Business Applications
-This project simulates a scalable retail analytics system suitable for:
+- **Power BI Desktop** – DAX, dashboards, slicers
+- **Python** – Pandas, Prophet, matplotlib
+- **Data Modeling** – Star schema with fact/dimension tables
+- **Statistical Analysis** – t-tests, chi-square, regression
+- **Version Control** – Git + GitHub
 
-Sales monitoring and trend forecasting
+---
 
-Regional and product performance tracking
+## 📥 Download
 
-Inventory planning and risk detection
-
-Promo impact analysis and planning optimization
-
+To get the full project as a ZIP:
+- Go to [Releases](https://github.com/pathak-shashank21/retail_dashboard/releases)
+- Download `retail_dashboard.zip`
